@@ -1,0 +1,57 @@
+from typing import Literal
+
+SESSION_CALLBACK: Literal["SID"] = "SID"
+CONV_CALLBACK: Literal["CID"] = "CID"
+ANSWER_CALLBACK: Literal["ANS"] = "ANS"
+ACTION_CALLBACK: Literal["ACT"] = "ACT"
+SELECT_ALL_CALLBACK: Literal["select_all_callback"] = "select_all_callback"
+CONFIRM_CALLBACK: Literal["confirm_callback"] = "confirm_callback"
+CANCEL_CALLBACK: Literal["cancel_callback"] = "cancel_callback"
+SKIP_CALLBACK: Literal["skip_callback"] = "skip_callback"
+BACK_CALLBACK: Literal["back_callback"] = "back_callback"
+NEXT_CALLBACK: Literal["next_callback"] = "next_callback"
+CREATE_CALLBACK: Literal["create_callback"] = "create_callback"
+EMPTY_CALLBACK: Literal["empty_callback"] = "empty_callback"
+REMOVE_CALLBACK: Literal["remove_callback"] = "remove_callback"
+RESTORE_CALLBACK: Literal["restore_callback"] = "restore_callback"
+CHOOSE_CALLBACK: Literal["choose_callback"] = "choose_callback"
+QUESTIONS_CALLBACK: Literal["questions_callback"] = "questions_callback"  # general_commands.json
+CHANGE_CALLBACK: Literal["change_callback"] = "change_callback"
+ADD_CALLBACK: Literal["add_callback"] = "add_callback"
+ENABLE_CALLBACK: Literal["enable_callback"] = "enable_callback"
+DISABLE_CALLBACK: Literal["disable_callback"] = "disable_callback"
+ACCEPT_CALLBACK: Literal["accept_callback"] = "accept_callback"
+DECLINE_CALLBACK: Literal["decline_callback"] = "decline_callback"
+CONFIGURE_CALLBACK: Literal["configure_callback"] = "configure_callback"
+FINISH_CALLBACK: Literal["finish_callback"] = "finish_callback"
+HELP_CALLBACK: Literal["help_callback"] = "help_callback"
+MORE_CALLBACK: Literal["more_callback"] = "more_callback"
+SAVE_CALLBACK: Literal["save_callback"] = "save_callback"
+IGNORE_CALLBACK: Literal["ignore_callback"] = "ignore_callback"
+DIALOG_CALLBACK: Literal["start_dialog"] = "start_dialog"
+PREV_ACTIONS_CALLBACK: Literal["prev_actions_callback"] = "prev_actions_callback"
+NEXT_ACTIONS_CALLBACK: Literal["next_actions_callback"] = "next_actions_callback"
+MORE_ACTIONS_CALLBACK: Literal["more_actions_callback"] = "more_actions_callback"
+BACK_ACTIONS_CALLBACK: Literal["back_actions_callback"] = "back_actions_callback"
+PREV_ANSWERS_CALLBACK: Literal["prev_answers_callback"] = "prev_answers_callback"
+NEXT_ANSWERS_CALLBACK: Literal["next_answers_callback"] = "next_answers_callback"
+
+CALLBACK_MAIN: Literal["CALLBACKMAIN"] = "CALLBACKMAIN"  # general_commands.json
+CALLBACK_CALLADMIN: Literal["CALLADMIN"] = "CALLADMIN"  # deprecated alias
+CALLBACK_CALL_ADMIN: Literal["CALL_ADMIN"] = "CALL_ADMIN"  # general_commands.json
+CALLBACK_MODELS: Literal["MODELS"] = "MODELS"  # general_commands.json
+CALLBACK_LIMITS: Literal["LIMITS"] = "LIMITS"  # general_commands.json
+CALLBACK_CONTEXTS: Literal["CONTEXTS"] = "CONTEXTS"  # general_commands.json
+CALLBACK_QUESTIONS: Literal["QUESTIONS"] = "QUESTIONS"  # general_commands.json
+CALLBACK_FILIALS: Literal["FILIALS"] = "FILIALS"  # general_commands.json
+CALLBACK_DATES: Literal["DATES"] = "DATES"  # general_commands.json
+CALLBACK_SHOWDIALOG: Literal["SHOWDIALOG"] = "SHOWDIALOG"  # general_commands.json
+CALLBACK_CLOSEDIALOG: Literal["CLOSEDIALOG"] = "CLOSEDIALOG"
+CALLBACK_FINISHDIALOG: Literal["FINISHDIALOG"] = "FINISHDIALOG"
+CALLBACK_USERS: Literal["USERS"] = "USERS"
+CALLBACK_ADMINS: Literal["ADMINS"] = "ADMINS"
+CALLBACK_REMOVE: Literal["REMOVE_MESSAGE"] = "RM_C"
+
+SHARED_CALLBACK: Literal["shared_callback"] = "shared_callback"
+NOTSHARED_CALLBACK: Literal["notshared_callback"] = "notshared_callback"
+PERIOD_CALLBACK: Literal["period_callback"] = "period_callback"

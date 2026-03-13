@@ -1,0 +1,7 @@
+requests>=2.31.0
+Pillow>=10.0.0
+vk-api>=11.9.9
+pyTelegramBotAPI>=4.15.0
+SpeechRecognition>=3.10.0
+pydub>=0.25.1
+pywin32>=306; platform_system == "Windows"
