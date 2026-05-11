@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Python 3.12 / unittest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      STORAGE_BACKEND: sql
+      DATABASE_ECHO: "0"
+      DATABASE_URL: "sqlite:////tmp/autocenter_bot_ci.db"
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg flac
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compile project
+        run: python -m compileall -q main.py relay bots db tests
+
+      - name: Import sanity check
+        run: python -c "import main; import relay; import db.storage"
+
+      - name: Apply database migrations
+        run: alembic upgrade head
+
+      - name: Run unit tests
+        run: python -m unittest discover tests -p "*_test.py"

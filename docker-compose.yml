@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: autocenter_bot
+      POSTGRES_USER: bot_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bot_user -d autocenter_bot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  bot:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: ""
+      DATABASE_DRIVER: postgresql+psycopg
+      DATABASE_HOST: db
+      DATABASE_PORT: "5432"
+      DATABASE_NAME: autocenter_bot
+      DATABASE_USER: bot_user
+      DATABASE_PASSWORD_FILE: /run/secrets/postgres_password
+      DATABASE_ECHO: "0"
+      STORAGE_BACKEND: sql
+    secrets:
+      - postgres_password
+    volumes:
+      - ./.env:/app/.env:ro
+      - ./attachments:/app/attachments
+      - ./cache:/app/cache
+      - ./files:/app/files
+      - ./logs:/app/logs
+      - ./voice:/app/voice
+
+volumes:
+  postgres_data:
+
+secrets:
+  postgres_password:
+    file: ./.secrets/postgres_password

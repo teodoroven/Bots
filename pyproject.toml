@@ -1,0 +1,42 @@
+[project]
+name = "relay-autocenter-bot"
+version = "0.1.0"
+description = "Telegram/VK bot for an autocenter with user sessions, admin workflows, GPT integration and SQLAlchemy storage."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "teodoroven" }
+]
+keywords = [
+    "telegram-bot",
+    "vk-bot",
+    "chatbot",
+    "sqlalchemy",
+    "alembic",
+    "gpt",
+    "admin-panel",
+    "state-machine",
+    "python"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Russian",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Chat",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries :: Application Frameworks"
+]
+
+[project.urls]
+Repository = "https://github.com/teodoroven/Bots"
+Documentation = "https://github.com/teodoroven/Bots/tree/main/docs"
+"Transport layer" = "https://github.com/teodoroven/Bots/tree/main/bots"
+"Application layer" = "https://github.com/teodoroven/Bots/tree/main/relay"
+"Storage layer" = "https://github.com/teodoroven/Bots/tree/main/db"
