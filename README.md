@@ -49,6 +49,13 @@ Python-проект чат-бота для автошколы с поддерж�
 - `unittest`.
 - `logging`.
 
+## Что стоит посмотреть в первую очередь: 
+- `bots/` — transport-layer: единая модель `Message`, `Event`, `Keyboard`, `Button`, `Attachment` для Telegram и VK.
+- `relay/` — app-layer: обработчики, state-machine сессий, пользовательские и административные сценарии.
+- `db/` — storage-layer: SQLAlchemy, Alembic, репозитории и единый Storage API.
+- `tests/` — unit-тесты transport-layer, storage-layer, callback-ов, меню, сессий, GPT и очередей.
+- `.github/workflows/ci.yml` — CI: compile, import sanity check, Alembic migrations и запуск `unittest`.
+
 ## Быстрый старт
 
 ### 1. Клонировать репозиторий
@@ -200,6 +207,25 @@ python -m unittest discover tests -p "*_test.py"
 - transport-layer: Telegram/VK сообщения, кнопки, клавиатуры, вложения, wrapper-сообщения;
 - storage-layer: SQLAlchemy storage и репозитории;
 - app-layer: callback data, handlers, sessions, меню, users, GPT, queues, notifications.
+
+## Что важно:
+В проекте есть несколько зон повышенного риска:
+- разные платформы Telegram/VK должны приводиться к общей модели событий
+- callback-и и меню должны корректно восстанавливать состояние пользователя
+- пользовательские и административные сессии не должны конфликтовать
+- сообщения могут отправляться, редактироваться и удаляться по-разному на разных платформах
+- очереди задач должны обрабатывать side effects управляемо
+- GPT-ответы ограничиваются контекстами, моделями и лимитами
+- storage-layer должен сохранять пользователей, сессии, события, настройки и историю. 
+
+Проект включает задачи:
+- тестирование state-machine сценариев
+- проверка callback-протоколов
+- тестирование транспортных адаптеров
+- изоляция внешних API через общий интерфейс
+- unit-тесты для бизнес-логики и инфраструктурных слоёв
+- миграции БД как часть CI
+- проверка импортов, компиляции и тестов в pipeline.
 
 ## Мой вклад
 
